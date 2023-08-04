@@ -17,16 +17,16 @@ function ProtectedPage({ children }) {
 
     const getAllNotifications = async () => {
         try {
-            //dispatch(SetLoader(true));
+            dispatch(SetLoader(true));
             const ret = await getNotifications();
-            //dispatch(SetLoader(false));
+            dispatch(SetLoader(false));
             if (ret.success) {
                 setNotifications(ret.data);
             } else {
                 message.error(ret.message);
             }
         } catch (error) {
-            //dispatch(SetLoader(false));
+            dispatch(SetLoader(false));
             message.error(error.message);
         }
     };
@@ -39,7 +39,7 @@ function ProtectedPage({ children }) {
         }
     };
     const checkUserActived = async () => {
-       // dispatch(SetLoader(true));
+        // dispatch(SetLoader(true));
         try {
             const ret = await getCurrentUser();
             //dispatch(SetLoader(false));
